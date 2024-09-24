@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault(); // Empêcher le rechargement de la page
 
     // Simuler une connexion avec un rôle
-    const role = "admin";
+    const role = "tuteur";
     localStorage.setItem("userRole", role);
 
     alertMessage("success", "Connexion réussie avec succés", 2000);
