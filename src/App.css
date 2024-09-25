@@ -79,3 +79,23 @@
 
 
 /* forgotPass style */
+
+
+/* pagination */
+.pagination{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    font-weight: bold;
+}
+
+.pagination .active{
+    background-color: #0364AE;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+    margin: 0 10px;
+}
