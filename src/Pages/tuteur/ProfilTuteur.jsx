@@ -1,16 +1,18 @@
 const ProfilTuteur = () => {
     return (  
         <div>
-<div className="grid gap-6 mb-8 md:grid-cols-2">
-<div className="m-auto">
+<div className="mx-20">
   <div>
     <div className="mt-5 bg-white rounded-lg shadow">
-      <div className="flex">
-        <div className="flex-1 py-5 pl-5 overflow-hidden">
-          <h1 className="text-2xl font-semibold text-center leading-none">INFORMATIONS PERSONNEL</h1>
-        </div>
-      </div>
+          <h1 className="text-2xl font-semibold text-center pb-6 leading-none">INFORMATIONS PERSONNEL</h1>
       <div className="px-5 pb-4">
+      
+<div className="pb-4">
+  <label className="block mb-2 pt-4 font-bold text-gray-900 dark:text-white" htmlFor="file_input">Photo profile</label>
+  <input className="block w-full text-sm text-black placeholder-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
+</div>
+
+
       <div className="flex">
           <div className="flex-grow w-1/4 pr-2">
             <label for="Nom" className="pt-4 font-bold">Nom</label>
@@ -46,165 +48,8 @@ const ProfilTuteur = () => {
     </div>
   </div>
 </div>
+<div className="grid gap-6 mb-8 md:grid-cols-2">
 
-  {/* affectations tuteur */}
-  <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-    <h4 className="mb-10 text-center uppercase mt-6 font-semibold text-gray-800 dark:text-gray-300 text-2xl">
-      Modules affectés
-    </h4>
-    <div className="bg-white overflow-auto">
-    <table className="min-w-full leading-normal">
-      <thead>
-        <tr>
-          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-            Modues
-          </th>
-          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-            Durées
-          </th>
-          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-            Dates
-          </th>
-          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <div className="flex items-center">
-              <div className="ml-3">
-                <p className="text-gray-900 whitespace-no-wrap">
-                  Module 1
-                </p>
-              </div>
-            </div>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">2 Semaines</p>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">
-              Jan 21, 2020
-            </p>
-          </td>
-          <td className="px-4 py-3">
-              <div className="flex items-center space-x-4 text-sm">
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                  </svg>
-                </button>
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-        </tr>
-        <tr>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <div className="flex items-center">
-              <div className="ml-3">
-                <p className="text-gray-900 whitespace-no-wrap">
-                  Module 2
-                </p>
-              </div>
-            </div>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">4 Semaines</p>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">
-              Jan 01, 2020
-            </p>
-          </td>
-          <td className="px-4 py-3">
-              <div className="flex items-center space-x-4 text-sm">
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                  </svg>
-                </button>
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-        </tr>
-        <tr>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <div className="flex items-center">
-              <div className="ml-3">
-                <p className="text-gray-900 whitespace-no-wrap">
-                  Module 3
-                </p>
-              </div>
-            </div>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">6 Semaines</p>
-          </td>
-          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">
-              Jan 10, 2020
-            </p>
-          </td>
-          <td className="px-4 py-3">
-              <div className="flex items-center space-x-4 text-sm">
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                  </svg>
-                </button>
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-        </tr>
-        <tr>
-          <td className="px-5 py-5 bg-white text-sm">
-            <div className="flex items-center">
-              <div className="ml-3">
-                <p className="text-gray-900 whitespace-no-wrap">
-                  Module 4
-                </p>
-              </div>
-            </div>
-          </td>
-          <td className="px-5 py-5 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">10 Semaines</p>
-          </td>
-          <td className="px-5 py-5 bg-white text-sm">
-            <p className="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
-          </td>
-          <td className="px-4 py-3">
-              <div className="flex items-center space-x-4 text-sm">
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                  </svg>
-                </button>
-                <button className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
 </div>
         </div>
     );
