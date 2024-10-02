@@ -244,10 +244,15 @@ const SeancesTuteur = () => {
       {/* Corp du Modal */}
       <form className="p-4 md:p-5">
         <div className="grid gap-4 mb-4 grid-cols-2">
-          <div className="col-span-2">
-            <label htmlFor="groupe" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Groupe</label>
-            <input type="text" name="groupe" id="groupe" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrer un groupe" required />
-          </div>
+        <div>
+          <label htmlFor="groupes" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choisir un groupe</label>
+            <select id="groupes" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected>Choisir un groupe</option>
+              <option value="Groupe 1">Groupe 1</option>
+              <option value="Groupe 2">Groupe 2</option>
+              <option value="Groupe 3">Groupe 3</option>
+            </select>
+        </div>
           <div className="col-span-2">
             <label htmlFor="module" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Module</label>
             <input type="text" name="module" id="module" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrer un module" required />
@@ -285,9 +290,14 @@ const SeancesTuteur = () => {
       {/* Corp du Modal */}
       <form className="p-4 md:p-5">
         <div className="grid gap-4 mb-4 grid-cols-2">
-          <div className="col-span-2">
-            <label htmlFor="groupe" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Groupe</label>
-            <input type="text" name="groupe" id="groupe" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrer un groupe" value="Groupe 1" required />
+          <div>
+          <label htmlFor="groupes" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choisir un groupe</label>
+            <select id="groupes" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected>Choisir un groupe</option>
+              <option value="Groupe 1">Groupe 1</option>
+              <option value="Groupe 2">Groupe 2</option>
+              <option value="Groupe 3">Groupe 3</option>
+            </select>
           </div>
           <div className="col-span-2">
             <label htmlFor="module" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Module</label>
@@ -308,5 +318,4 @@ const SeancesTuteur = () => {
         </div>
     );
 }
- 
 export default SeancesTuteur;
