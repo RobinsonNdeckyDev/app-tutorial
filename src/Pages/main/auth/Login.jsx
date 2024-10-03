@@ -1,12 +1,12 @@
-import { useHistory } from "react-router-dom";
+import { useHistory  } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-// import { Link } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   const alertMessage = (icon, titre, timer) => {
@@ -16,33 +16,78 @@ const Login = () => {
       title: titre,
       showConfirmButton: false,
       timer: timer,
-      progressBar: true
+      progressBar: true,
     });
-  }
+  };
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // Empêcher le rechargement de la page
+  // Fonction pour gérer la connexion
+  const handleLogin = async (e) => {
+    // async;
+    e.preventDefault();
+    setIsLoading(true);
 
-    // Simuler une connexion avec un rôle
-    const role = "traqueur";
-    localStorage.setItem("userRole", role);
+    // const role = "traqueur";
+    // localStorage.setItem("userRole", role);
 
-    alertMessage("success", "Connexion réussie avec succés", 2000);
+    // // Redirection selon le rôle
+    // switch (role) {
+    //   case "admin":
+    //     history.push("/dashboard/admin/AdminDash");
+    //     break;
+    //   case "traqueur":
+    //     history.push("/dashboard/traqueur/traqueurDash");
+    //     break;
+    //   case "tuteur":
+    //     history.push("/dashboard/tuteur/tuteurDash");
+    //     break;
+    //   default:
+    //     history.push("/login");
+    // }
 
-    // Rediriger vers le Dashboard en fonction du rôle
-    switch (role) {
-      case "admin":
-        history.push("/dashboard/admin/AdminDash");
-        break;
-      case "traqueur":
-        history.push("/dashboard/traqueur/traqueurDash");
-        break;
-      case "tuteur":
-        history.push("/dashboard/tuteur/tuteurDash");
-        break;
-      default:
-        // Rediriger vers la page de connexion si le rôle est inconnu
-        history.push("/login");
+    // Envoyer une requête POST à l'API backend
+    const loginData = { email, password };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/auth/login", {
+        // Remplacer par ton URL d'API
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      const data = await response.json();
+      console.log("data", data)
+
+      if (!response.ok) {
+        throw new Error(data.message || "Erreur lors de la connexion");
+      }
+
+      // Enregistrement du token JWT et rôle dans le localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userRole", data.role);
+
+      alertMessage("success", "Connexion réussie avec succès", 2000);
+
+      // Redirection selon le rôle
+      switch (data.role) {
+        case "admin":
+          history.push("/dashboard/admin/AdminDash");
+          break;
+        case "tracker":
+          history.push("/dashboard/traqueur/traqueurDash");
+          break;
+        case "tuteur":
+          history.push("/dashboard/tuteur/tuteurDash");
+          break;
+        default:
+          history.push("/login");
+      }
+    } catch (error) {
+      alertMessage("error", error.message, 2000);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -56,12 +101,7 @@ const Login = () => {
         </div>
 
         <div className="">
-          <form
-            className="space-y-6"
-            action="#"
-            method="POST"
-            onSubmit={handleLogin}
-          >
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label
                 htmlFor="email"
@@ -74,11 +114,11 @@ const Login = () => {
                   id="email"
                   name="email"
                   type="email"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="monnom@gmail.com"
-                  className="block px-3 w-full text-color rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2  sm:text-sm sm:leading-6"
+                  className="block px-3 w-full text-color rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -99,20 +139,21 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="mot de passe"
-                  className="block px-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                  className="block px-3 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                 />
-
                 <span className="mt-2">
                   <Link to="/forgotPassword">Mot de passe oublié ?</Link>
                 </span>
               </div>
             </div>
+
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md btnLogin py-2 px-4 text-sm font-semibold text-white shadow-sm focus:ring-2 focus:ring-inset "
+                className="flex w-full justify-center rounded-md btnLogin py-2 px-4 text-sm font-semibold text-white shadow-sm focus:ring-2 focus:ring-inset"
+                disabled={isLoading}
               >
-                Se connecter
+                {isLoading ? "Connexion en cours..." : "Se connecter"}
               </button>
             </div>
           </form>

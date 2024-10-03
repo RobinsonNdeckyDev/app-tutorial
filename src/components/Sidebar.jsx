@@ -13,7 +13,7 @@ const Sidebar = () => {
       <div className="nomApp">
         <p className="text-center font-bold">App-Tutorat</p>
       </div>
-      <nav className="my-10">
+      <nav className="my-5">
         <ul>
           {menuService[role].map((menu, index) => (
             <li
@@ -36,7 +36,7 @@ const Sidebar = () => {
         <img
           src="/src/assets/images/footSide-UNCHK.png"
           alt="logo unchk"
-          className="my-5"
+          className="my-4 w-3/4 mx-auto"
         />
         <p className="text-center font-medium m-0">
           <Link to="/login">

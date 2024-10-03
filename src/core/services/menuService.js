@@ -23,15 +23,25 @@ export const menuService = {
       icon: "bi bi-file-earmark-spreadsheet-fill",
     },
   ],
-  traqueur: [
+  tracker: [
     {
       name: "Dashboard",
       path: "/dashboard/traqueur/traqueurDash",
       icon: "bi bi-speedometer2",
     },
     {
+      name: "Affectations",
+      path: "/dashboard/traqueur/affectation",
+      icon: "bi bi-file-earmark-person",
+    },
+    {
       name: "Tuteurs",
       path: "/dashboard/traqueur/tuteurs",
+      icon: "bi bi-people",
+    },
+    {
+      name: "Etudiants",
+      path: "/dashboard/traqueur/etudiants",
       icon: "bi bi-people",
     },
     {
