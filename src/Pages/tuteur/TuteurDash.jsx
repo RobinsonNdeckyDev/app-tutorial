@@ -1,3 +1,6 @@
+import { Chart as ChartJS, defaults } from "chart.js/auto";
+import { Bar, Doughnut, Line } from "react-chartjs-2";
+
 const TuteurDash = () => {
     return (  
         <div>
@@ -35,7 +38,93 @@ const TuteurDash = () => {
     </div>
   </section>
 </div>
+<div className="chart pt-5 mt-5 mb-5 pb-5">
+  <div className="dataCard revenueCard">
+        <Line 
+      data={{
+        labels:["Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances","Modules","Groupes","Séances"],
+        datasets: [
+          {
+            label : "Modules",
+            data: [200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400],
+            backgroundColor: [
+              "rgba(20,43,59,0.9)",
+              "rgba(92,113,29,0.9)",
+              "rgba(143,13,10,0.9)",
+            ],
+          },
+          {
+            label : "Groupes",
+            data: [200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400],
+            backgroundColor: [
+              "rgba(20,43,59,0.9)",
+              "rgba(92,113,29,0.9)",
+              "rgba(143,13,10,0.9)",
+            ],
+          },
+          {
+            label : "Séances",
+            data: [200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400,200,150,400],
+            backgroundColor: [
+              "rgba(20,43,59,0.9)",
+              "rgba(92,113,29,0.9)",
+              "rgba(143,13,10,0.9)",
+            ],
+          },
+        ],
+      }}
+    /> 
+  </div>
+  <div className="dataCard customerCard">
+    <Bar 
+      data={{
+        labels:["Modules","Groupes","Séances"],
+        datasets: [
+          {
+            label : "Modules",
+            data: [200,300,400],
+            backgroundColor: [
+              "rgba(20,43,59,0.9)"
+            ],
+          },
+          {
+            label : "Séances",
+            data: [150,250,300],
+            backgroundColor: [
+              "rgba(143,13,10,0.9)"
+            ],
+          },
+          {
+            label : "Groupes",
+            data: [20,50,80],
+            backgroundColor: [
+              "rgba(92,113,29,0.9)"
 
+            ],
+          },
+        ],
+      }}
+    /> 
+  </div>
+  <div className="dataCard customerCard">
+    <Doughnut 
+      data={{
+        labels:["Modules","Groupes","Séances"],
+        datasets: [
+          {
+            label : "Module",
+            data: [200,300,400],
+            backgroundColor: [
+              "rgba(20,43,59,0.9)",
+              "rgba(92,113,29,0.9)",
+              "rgba(143,13,10,0.9)",
+            ],
+          },
+        ],
+      }}
+    /> 
+  </div>
+</div>
         </div>
     );
 }
