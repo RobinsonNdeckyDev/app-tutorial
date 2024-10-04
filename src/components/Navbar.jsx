@@ -1,7 +1,32 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 // import { ChevronDownIcon } from "@heroicons";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 const Navbar = () => {
+
+  const history = useHistory();
+
+  // deconnexion
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
+    history.push("/login");
+    alertMessage("success", "Deconnexion réussie", 2000);
+  };
+
+  const alertMessage = (icon, titre, timer) => {
+    Swal.fire({
+      position: "top-end",
+      icon: icon,
+      title: titre,
+      showConfirmButton: false,
+      timer: timer,
+      progressBar: true,
+    });
+  };
+
   return (
     <div className="p-3 navbar flex justify-between align-center">
       <div className="logo">
@@ -46,16 +71,15 @@ const Navbar = () => {
                   Mon profil
                 </a>
               </MenuItem>
-              <form action="#" method="POST">
-                <MenuItem>
-                  <button
-                    type="submit"
-                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-                  >
-                    Se déconnecter
-                  </button>
-                </MenuItem>
-              </form>
+              <MenuItem>
+                <p
+                  href="#"
+                  className="block cursor-pointer w-full px-4 py-2 text-left text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900" 
+                  onClick={logout}
+                >
+                  Se déconnecter
+                </p>
+              </MenuItem>
             </div>
           </MenuItems>
         </Menu>

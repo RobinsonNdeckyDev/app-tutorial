@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
-// import { CloudSnow } from "lucide-react";
 
-// Composant Table
-const Table = ({ data, columns, onView, onDelete, onUpdate, search}) => {
+const Table = ({
+  data,
+  columns,
+  onView,
+  onDelete,
+  onUpdate,
+  search,
+  showActions = true,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
@@ -29,7 +35,6 @@ const Table = ({ data, columns, onView, onDelete, onUpdate, search}) => {
     setCurrentPage(event.selected);
   };
 
-  
   return (
     <div className="container mx-auto">
       {/* Champ de recherche */}
@@ -54,10 +59,12 @@ const Table = ({ data, columns, onView, onDelete, onUpdate, search}) => {
               </th>
             ))}
 
-            {/* Collonne pour les actions */}
-            <th className="py-2 px-4 border text-center bg-gray-100">
-              Actions
-            </th>
+            {/* Colonne des actions, affichée selon la prop showActions */}
+            {showActions && (
+              <th className="py-2 px-4 border text-center bg-gray-100">
+                Actions
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -72,30 +79,32 @@ const Table = ({ data, columns, onView, onDelete, onUpdate, search}) => {
                 </td>
               ))}
 
-              {/* Colonne pour les actions */}
-              <td className="py-2 px-4 border text-center">
-                <button
-                  onClick={() => onView(item.id)}
-                  className="text-blue-500 hover:text-blue-700 mx-2"
-                  title="Voir détails"
-                >
-                  <i className="bi bi-eye-fill"></i>
-                </button>
-                <button
-                  onClick={() => onUpdate(item.id)}
-                  className="text-green-500 hover:text-green-700 mx-2"
-                  title="Modifier"
-                >
-                  <i className="bi bi-pencil-square"></i>
-                </button>
-                <button
-                  onClick={() => onDelete(item.id)}
-                  className="text-red-500 hover:text-red-700 mx-2"
-                  title="Supprimer"
-                >
-                  <i className="bi bi-trash"></i>
-                </button>
-              </td>
+              {/* Colonne pour les actions, affichée selon la prop showActions */}
+              {showActions && (
+                <td className="py-2 px-4 border text-center">
+                  <button
+                    onClick={() => onView(item.id)}
+                    className="text-blue-500 hover:text-blue-700 mx-2"
+                    title="Voir détails"
+                  >
+                    <i className="bi bi-eye-fill"></i>
+                  </button>
+                  <button
+                    onClick={() => onUpdate(item.id)}
+                    className="text-green-500 hover:text-green-700 mx-2"
+                    title="Modifier"
+                  >
+                    <i className="bi bi-pencil-square"></i>
+                  </button>
+                  <button
+                    onClick={() => onDelete(item.id)}
+                    className="text-red-500 hover:text-red-700 mx-2"
+                    title="Supprimer"
+                  >
+                    <i className="bi bi-trash"></i>
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

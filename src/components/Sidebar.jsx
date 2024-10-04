@@ -1,9 +1,32 @@
 import { Link} from "react-router-dom";
 import { menuService } from "../core/services/menuService";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Sidebar = () => {
+  const history = useHistory();
+
   // Récupère le rôle depuis le localStorage
   const role = localStorage.getItem("userRole");
+
+  // deconnexion
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
+    history.push('/login')
+    alertMessage("success", "Deconnexion réussie", 2000)
+  }
+
+  const alertMessage = (icon, titre, timer) => {
+    Swal.fire({
+      position: "top-end",
+      icon: icon,
+      title: titre,
+      showConfirmButton: false,
+      timer: timer,
+      progressBar: true,
+    });
+  };
 
   // Si pas de rôle défini, pas de sidebar
   if (!role || !menuService[role]) return null;
@@ -38,10 +61,9 @@ const Sidebar = () => {
           alt="logo unchk"
           className="my-4 w-3/4 mx-auto"
         />
-        <p className="text-center font-medium m-0">
-          <Link to="/login">
-            <i className="bi bi-box-arrow-right mr-2 "></i>Se deconnecter
-          </Link>{" "}
+        <p className="text-center font-medium m-0 cursor-pointer" onClick={() => logout()}>
+          <i className="bi bi-box-arrow-right mr-2 "></i>
+          Se deconnecter
         </p>
       </div>
     </div>
