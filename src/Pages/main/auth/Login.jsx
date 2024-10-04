@@ -26,26 +26,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // const role = "traqueur";
-    // localStorage.setItem("userRole", role);
-
-    // // Redirection selon le rôle
-    // switch (role) {
-    //   case "admin":
-    //     history.push("/dashboard/admin/AdminDash");
-    //     break;
-    //   case "traqueur":
-    //     history.push("/dashboard/traqueur/traqueurDash");
-    //     break;
-    //   case "tuteur":
-    //     history.push("/dashboard/tuteur/tuteurDash");
-    //     break;
-    //   default:
-    //     history.push("/login");
-    // }
-
-    // Envoyer une requête POST à l'API backend
-    const loginData = { email, password };
+   const loginData = { email, password };
 
     try {
       const response = await fetch("http://127.0.0.1:8000/api/auth/login", {

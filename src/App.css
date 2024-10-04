@@ -1,82 +1,115 @@
-/* Sidebar style */
-
-.sidebar{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+/* chart*/
+.chart {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 2vw;
+  flex-wrap: wrap;
+  background-color: #ddd;
 }
 
-.sidebar nav{
-    /* border: 1px solid red; */
-    flex-grow: 1;
+.dataCard {
+  background-color: #efefef;
+  border-radius: 0.5em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 0.5em;
+}
+
+.revenueCard {
+  width: 92%;
+  height: 20rem;
+}
+
+.customerCard {
+  width: 45%;
+  height: 20rem;
+}
+
+.categoryCard {
+  width: 60%;
+  height: 20rem;
+}
+
+/* Sidebar style */
+
+.sidebar {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav {
+  /* border: 1px solid red; */
+  flex-grow: 1;
 }
 
 .sidebar nav li {
-    border-radius: 25px;
+  border-radius: 25px;
 }
 
-.sidebar nav li a{
-    font-weight: 600;
+.sidebar nav li a {
+  font-weight: 600;
 }
 
-.sidebar nav li a i{
-    margin-right: 10px;
+.sidebar nav li a i {
+  margin-right: 10px;
 }
 
-.activeLink{
-    background-color: #0364aec7;
+.activeLink {
+  background-color: #0364aec7;
 }
 
 /* Sidebar style */
 
-
 /* login style */
 
-.login{
-    height: 100vh;
-    background-image: url(../src/assets/images/cas-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+.login {
+  height: 100vh;
+  background-image: url(../src/assets/images/cas-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.login .text-color{
-    color: #0364AE;
+.login .text-color {
+  color: #0364ae;
 }
 
-.login .loginCard{
-    background-color: rgba(255, 255, 255, 0.808);
-    border-radius: 10px;
+.login .loginCard {
+  background-color: rgba(255, 255, 255, 0.808);
+  border-radius: 10px;
 }
 
-.login .loginCard .btnLogin{
-    background-color: #0364AE;
+.login .loginCard .btnLogin {
+  background-color: #0364ae;
 }
-
 
 /* login style */
 
 /* forgotPass style */
 
 .forgotPassword {
-    height: 100vh;
-    background-image: url(../src/assets/images/cas-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100vh;
+  background-image: url(../src/assets/images/cas-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .forgotPassword .text-color {
-    color: #0364AE;
+  color: #0364ae;
 }
 
 .forgotPassword .forgotCard {
-    background-color: rgba(255, 255, 255, 0.808);
-    border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.808);
+  border-radius: 10px;
 }
 
 .forgotPassword .forgotCard .btnLogin {
-    background-color: #0364AE;
+  background-color: #0364ae;
 }
-
 
 /* forgotPass style */
 
