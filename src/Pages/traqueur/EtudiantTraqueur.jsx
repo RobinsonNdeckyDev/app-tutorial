@@ -354,7 +354,7 @@ const EtudiantTraqueur = () => {
         <Modal isOpen={isViewModalOpen} onClose={closeViewModal} width="1/3">
           <div className="mt-4">
             <h1 className="text-center my-5 font-bold text-2xl">
-              Détails affectation
+              Détails étudiant
             </h1>
             <div className="flex flex-col gap-3">
               {/* <p>Prenom: {selectedEtudiant.prenom}</p> */}

@@ -30,6 +30,8 @@ const Tuteurstraqueur = () => {
     },
   ]);
 
+  const [selectedTuteur, setSelectedTuteur] = useState(null);
+
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
   const [photo, setPhoto] = useState("");
@@ -40,7 +42,56 @@ const Tuteurstraqueur = () => {
   const [adresse, setAdresse] = useState("");
   const [age, setAge] = useState();
 
-  
+  // modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+
+  // Open/Close Modals
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  // voir modification modal
+  const openEditModal = (Tuteur) => {
+    setSelectedTuteur(Tuteur);
+    setPrenom(Tuteur.prenom);
+    setNom(Tuteur.nom);
+    setEmail(Tuteur.email);
+    setPhoto(Tuteur.photo);
+    setAdresse(Tuteur.adresse);
+    setSexe(Tuteur.sexe);
+    setAge(Tuteur.age);
+    setTelephone(Tuteur.telephone);
+    setIsEditModalOpen(true);
+  };
+
+  // fermeture edit modal
+  const closeEditModal = () => setIsEditModalOpen(false);
+
+  // voir detail modal
+  const openViewModal = (Tuteur) => {
+    setSelectedTuteur(Tuteur);
+    setIsViewModalOpen(true);
+  };
+
+  // fermeture detail modal
+  const closeViewModal = () => setIsViewModalOpen(false);
+
+  const handleEdit = (id) => {
+    const Tuteur = data.find((item) => item.id === id);
+    openEditModal(Tuteur);
+  };
+
+  const handleView = (id) => {
+    const Tuteur = data.find((item) => item.id === id);
+    openViewModal(Tuteur);
+  };
+
+  const handleDelete = (id) => {
+    const updatedData = data.filter((item) => item.id !== id);
+    setData(updatedData);
+  };
+
   // handleAdd
   const handleAddTutor = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
@@ -48,9 +99,9 @@ const Tuteurstraqueur = () => {
     // date
     const today = new Date();
 
-    const day = String(today.getDate()).padStart(2, "0"); 
+    const day = String(today.getDate()).padStart(2, "0");
     const month = String(today.getMonth() + 1).padStart(2, "0");
-    const year = String(today.getFullYear()).slice(-2); 
+    const year = String(today.getFullYear()).slice(-2);
 
     const formattedDate = `${day}-${month}-${year}`;
 
@@ -64,7 +115,7 @@ const Tuteurstraqueur = () => {
       adresse,
       sexe,
       age,
-      created_at: formattedDate
+      created_at: formattedDate,
     };
 
     console.log("nouveau tuteur", newItem);
@@ -85,25 +136,20 @@ const Tuteurstraqueur = () => {
 
     closeModal(); // Fermer la modal après soumission
   };
-  // modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // handleUpdateItem
+  const handleUpdateItem = (e) => {
+    e.preventDefault(); // Empêche le rechargement de la page
 
-  const handleEdit = (data) => {
-    console.log("edit", data);
+    const updatedData = data.map((item) =>
+      item.id === selectedTuteur.id
+        ? { ...item, prenom, nom, email, adresse, age, sexe, telephone, photo }
+        : item
+    );
+
+    setData(updatedData);
+    closeEditModal(); // Ferme la modale après mise à jour
   };
-
-  const handleView = (data) => {
-    console.log("view", data);
-  };
-
-  const handleDelete = (data) => {
-    console.log("delete", data);
-  };
-
-  
 
   const columns = [
     { Header: "Photo", accessor: "photo" },
@@ -226,6 +272,126 @@ const Tuteurstraqueur = () => {
           </div>
         </form>
       </Modal>
+
+      {/* Modal pour modifier une affectation */}
+      {selectedTuteur && (
+        <Modal isOpen={isEditModalOpen} onClose={closeEditModal} width="2/3">
+          <form className="mt-4" onSubmit={handleUpdateItem}>
+            <h1 className="text-center my-5 font-bold text-2xl">
+              Modification du tuteur
+            </h1>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-3">
+                <Input
+                  type="text"
+                  placeholder="Prénom"
+                  value={prenom}
+                  onChange={(e) => setPrenom(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="text"
+                  placeholder="Nom tuteur"
+                  value={nom}
+                  onChange={(e) => setNom(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="text"
+                  placeholder="Genre"
+                  value={sexe}
+                  onChange={(e) => setSexe(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="number"
+                  placeholder="Age"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  fullWidth
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="text"
+                  placeholder="Adresse"
+                  value={adresse}
+                  onChange={(e) => setAdresse(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="password"
+                  placeholder="Mot de passe"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  fullWidth
+                />
+                {/* <Input
+                  type="file"
+                  placeholder="Photo"
+                  value={photo}
+                  onChange={(e) => setPhoto(e.target.value)}
+                  fullWidth
+                /> */}
+              </div>
+            </div>
+
+            <div className="flex justify-center mt-8 gap-8">
+              <Button size="md" color="green" variant="outlined" type="submit">
+                Mettre à jour
+              </Button>
+              <Button
+                size="md"
+                color="dark"
+                variant="outlined"
+                onClick={closeEditModal}
+              >
+                Annuler
+              </Button>
+            </div>
+          </form>
+        </Modal>
+      )}
+
+      {/* Modal pour voir les détails */}
+      {selectedTuteur && (
+        <Modal isOpen={isViewModalOpen} onClose={closeViewModal} width="1/3">
+          <div className="mt-4">
+            <h1 className="text-center my-5 font-bold text-2xl">
+              Détails tuteur 
+            </h1>
+            <div className="flex flex-col gap-3">
+              {/* <p>Prenom: {selectedEtudiant.prenom}</p> */}
+              <p>Photo: {selectedTuteur.photo}</p>
+              <p>Prenom: {selectedTuteur.prenom}</p>
+              <p>Nom: {selectedTuteur.nom}</p>
+              <p>Email: {selectedTuteur.email}</p>
+              <p>Adresse: {selectedTuteur.adresse}</p>
+              <p>Sexe: {selectedTuteur.sexe}</p>
+              <p>Age: {selectedTuteur.age}</p>
+              <p>Telephone: {selectedTuteur.telephone}</p>
+            </div>
+
+            <div className="flex justify-center mt-8 gap-8">
+              <Button
+                size="md"
+                color="dark"
+                variant="outlined"
+                onClick={closeViewModal}
+              >
+                Fermer
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
