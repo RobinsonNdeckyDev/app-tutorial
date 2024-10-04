@@ -79,3 +79,45 @@
 
 
 /* forgotPass style */
+
+
+/* pagination */
+.pagination{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    font-weight: bold;
+}
+
+.pagination .active{
+    background-color: #0364AE;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+    margin: 0 10px;
+}
+
+.pagination li a {
+    display: block;
+    margin: 0 8px;
+    padding: 8px ;
+    text-decoration: none;
+    color: black;
+}
+
+.pagination .active a {
+    /* background-color: #007bff; */
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.pagination .break-me {
+    padding: 8px 12px;
+}

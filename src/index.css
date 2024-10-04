@@ -36,9 +36,9 @@ body {
 }
 
 .sidebar {
-  width: 200px;
+  width: 210px;
   background-color: #fff;
-  padding: 20px;
+  padding: 15px;
   /* border: 1px solid red; */
 }
 
@@ -52,7 +52,7 @@ body {
 
 .principal-content {
   height: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 /* Styles pour les navigateurs basés sur WebKit (Chrome, Safari) */

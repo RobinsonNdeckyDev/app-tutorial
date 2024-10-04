@@ -1,46 +1,47 @@
 import Table from "../../components/ui/Table";
 import { useState } from "react";
 import Modal from "../../components/ui/Modal";
+// import Form from "../../components/ui/Form";
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
 
-const Tuteurstraqueur = () => {
+const EtudiantTraqueur = () => {
   const [data, setData] = useState([
     {
       id: 1,
-      prenom: "John",
-      nom: "Doe",
-      email: "john@example.com",
-      age: 28,
-      sexe: "homme",
+      nom: "Moussa Sarr",
+      email: "moussasarr@gmail.com",
+      sexe: "Homme",
       adresse: "Dakar",
       photo: "img1",
-      telephone: "765678756",
+      promo: 7,
+      cycle: "Licence",
+      eno: "Dakar",
     },
     {
       id: 2,
-      prenom: "Jane",
-      nom: "Smith",
-      email: "jane@example.com",
-      age: 34,
-      sexe: "femme",
+      nom: "Awa Seck",
+      email: "awaseck@gmail.com",
+      sexe: "Femme",
       adresse: "Dakar",
       photo: "img2",
-      telephone: "755648756",
+      promo: 7,
+      cycle: "Licence",
+      eno: "Sebikotane",
     },
+    // Autres données...
   ]);
 
-  const [selectedTuteur, setSelectedTuteur] = useState(null);
+  const [selectedEtudiant, setSelectedEtudiant] = useState(null);
 
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
-  const [photo, setPhoto] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [sexe, setSexe] = useState("");
+  const [photo, setPhoto] = useState("");
   const [adresse, setAdresse] = useState("");
-  const [age, setAge] = useState();
+  const [promo, setPromo] = useState("");
+  const [cycle, setCycle] = useState("");
+  const [eno, setEno] = useState("");
 
   // modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,16 +53,16 @@ const Tuteurstraqueur = () => {
   const closeModal = () => setIsModalOpen(false);
 
   // voir modification modal
-  const openEditModal = (Tuteur) => {
-    setSelectedTuteur(Tuteur);
-    setPrenom(Tuteur.prenom);
-    setNom(Tuteur.nom);
-    setEmail(Tuteur.email);
-    setPhoto(Tuteur.photo);
-    setAdresse(Tuteur.adresse);
-    setSexe(Tuteur.sexe);
-    setAge(Tuteur.age);
-    setTelephone(Tuteur.telephone);
+  const openEditModal = (etudiant) => {
+    setSelectedEtudiant(etudiant);
+    setPrenom(etudiant.prenom);
+    setNom(etudiant.nom);
+    setEmail(etudiant.email);
+    setPhoto(etudiant.photo);
+    setAdresse(etudiant.adresse);
+    setCycle(etudiant.cycle);
+    setPromo(etudiant.promo);
+    setEno(etudiant.eno);
     setIsEditModalOpen(true);
   };
 
@@ -69,8 +70,8 @@ const Tuteurstraqueur = () => {
   const closeEditModal = () => setIsEditModalOpen(false);
 
   // voir detail modal
-  const openViewModal = (Tuteur) => {
-    setSelectedTuteur(Tuteur);
+  const openViewModal = (etudiant) => {
+    setSelectedEtudiant(etudiant);
     setIsViewModalOpen(true);
   };
 
@@ -78,13 +79,13 @@ const Tuteurstraqueur = () => {
   const closeViewModal = () => setIsViewModalOpen(false);
 
   const handleEdit = (id) => {
-    const Tuteur = data.find((item) => item.id === id);
-    openEditModal(Tuteur);
+    const etudiant = data.find((item) => item.id === id);
+    openEditModal(etudiant);
   };
 
   const handleView = (id) => {
-    const Tuteur = data.find((item) => item.id === id);
-    openViewModal(Tuteur);
+    const etudiant = data.find((item) => item.id === id);
+    openViewModal(etudiant);
   };
 
   const handleDelete = (id) => {
@@ -93,32 +94,19 @@ const Tuteurstraqueur = () => {
   };
 
   // handleAdd
-  const handleAddTutor = (e) => {
+  const handleAddNewItem = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
-
-    // date
-    const today = new Date();
-
-    const day = String(today.getDate()).padStart(2, "0");
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const year = String(today.getFullYear()).slice(-2);
-
-    const formattedDate = `${day}-${month}-${year}`;
 
     const newItem = {
       prenom,
       nom,
-      photo,
       email,
-      password,
-      telephone,
+      photo,
       adresse,
-      sexe,
-      age,
-      created_at: formattedDate,
+      promo,
+      cycle,
+      eno,
     };
-
-    console.log("nouveau tuteur", newItem);
 
     // Ajoute le nouvel étudiant et génère un ID unique
     setData([...data, { id: data.length + 1, ...newItem }]);
@@ -126,13 +114,12 @@ const Tuteurstraqueur = () => {
     // Réinitialise le formulaire après soumission
     setPrenom("");
     setNom("");
-    setPhoto("");
     setEmail("");
-    setPassword("");
-    setTelephone("");
+    setPhoto("");
     setAdresse("");
-    setSexe("");
-    setAge("");
+    setPromo("");
+    setCycle("");
+    setEno("");
 
     closeModal(); // Fermer la modal après soumission
   };
@@ -142,8 +129,8 @@ const Tuteurstraqueur = () => {
     e.preventDefault(); // Empêche le rechargement de la page
 
     const updatedData = data.map((item) =>
-      item.id === selectedTuteur.id
-        ? { ...item, prenom, nom, email, adresse, age, sexe, telephone, photo }
+      item.id === selectedEtudiant.id
+        ? { ...item, prenom, nom, email, adresse, promo, eno, cycle, photo }
         : item
     );
 
@@ -151,28 +138,30 @@ const Tuteurstraqueur = () => {
     closeEditModal(); // Ferme la modale après mise à jour
   };
 
+  
+
   const columns = [
     { Header: "Photo", accessor: "photo" },
-    { Header: "Prenom", accessor: "prenom" },
     { Header: "Nom", accessor: "nom" },
     { Header: "Email", accessor: "email" },
     { Header: "Adresse", accessor: "adresse" },
-    { Header: "Age", accessor: "age" },
-    { Header: "Genre", accessor: "sexe" },
-    { Header: "Telephone", accessor: "telephone" },
+    { Header: "Promo", accessor: "promo" },
+    { Header: "Cycle", accessor: "cycle" },
+    { Header: "Eno", accessor: "eno" },
   ];
 
   return (
-    <div className="tuteurs">
-      <p className="text-start font-bold">Liste des tuteurs</p>
+    <div className="">
+      <p className="text-start font-bold">Liste des étudiant</p>
 
+      {/* <p>Page tuteurs works !</p> */}
       <div className="">
         <div className=" flex justify-end mb-4 mt-8">
           <button
             onClick={openModal}
             className="bg-blue-500 text-white px-4 py-2 rounded"
           >
-            Ajouter un tuteur
+            Ajouter un un étudiant
           </button>
         </div>
 
@@ -183,17 +172,17 @@ const Tuteurstraqueur = () => {
           onDelete={handleDelete}
           onView={handleView}
           className="m-0"
-          search="Chercher un tuteur"
+          search="Chercher une étudiant"
         ></Table>
       </div>
 
       {/* Modal qui contient le formulaire */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} className="w-52">
-        <form className="mt-4" onSubmit={handleAddTutor}>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <form className="mt-4" onSubmit={handleAddNewItem}>
           <h1 className="text-center my-5 font-bold text-2xl">
-            Ajouter un tuteur
+            Ajouter un étudiant
           </h1>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             <div className="flex flex-col gap-3">
               <Input
                 type="text"
@@ -204,29 +193,13 @@ const Tuteurstraqueur = () => {
               />
               <Input
                 type="text"
-                placeholder="Nom tuteur"
+                placeholder="Nom"
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
                 fullWidth
               />
               <Input
                 type="text"
-                placeholder="Genre"
-                value={sexe}
-                onChange={(e) => setSexe(e.target.value)}
-                fullWidth
-              />
-              <Input
-                type="number"
-                placeholder="Age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                fullWidth
-              />
-            </div>
-            <div className="flex flex-col gap-3">
-              <Input
-                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -239,11 +212,27 @@ const Tuteurstraqueur = () => {
                 onChange={(e) => setAdresse(e.target.value)}
                 fullWidth
               />
+            </div>
+            <div className="flex flex-col gap-3">
               <Input
-                type="password"
-                placeholder="Mot de passe"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                placeholder="Promo"
+                value={promo}
+                onChange={(e) => setPromo(e.target.value)}
+                fullWidth
+              />
+              <Input
+                type="text"
+                placeholder="Cycle"
+                value={cycle}
+                onChange={(e) => setCycle(e.target.value)}
+                fullWidth
+              />
+              <Input
+                type="text"
+                placeholder="Eno de rattachement"
+                value={eno}
+                onChange={(e) => setEno(e.target.value)}
                 fullWidth
               />
               <Input
@@ -274,13 +263,13 @@ const Tuteurstraqueur = () => {
       </Modal>
 
       {/* Modal pour modifier une affectation */}
-      {selectedTuteur && (
-        <Modal isOpen={isEditModalOpen} onClose={closeEditModal} width="2/3">
+      {selectedEtudiant && (
+        <Modal isOpen={isEditModalOpen} onClose={closeEditModal} width="1/3">
           <form className="mt-4" onSubmit={handleUpdateItem}>
             <h1 className="text-center my-5 font-bold text-2xl">
-              Modification du tuteur
+              Modifier une affectation
             </h1>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <div className="flex flex-col gap-3">
                 <Input
                   type="text"
@@ -291,29 +280,13 @@ const Tuteurstraqueur = () => {
                 />
                 <Input
                   type="text"
-                  placeholder="Nom tuteur"
+                  placeholder="Nom"
                   value={nom}
                   onChange={(e) => setNom(e.target.value)}
                   fullWidth
                 />
                 <Input
                   type="text"
-                  placeholder="Genre"
-                  value={sexe}
-                  onChange={(e) => setSexe(e.target.value)}
-                  fullWidth
-                />
-                <Input
-                  type="number"
-                  placeholder="Age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  fullWidth
-                />
-              </div>
-              <div className="flex flex-col gap-3">
-                <Input
-                  type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -326,20 +299,36 @@ const Tuteurstraqueur = () => {
                   onChange={(e) => setAdresse(e.target.value)}
                   fullWidth
                 />
+              </div>
+              <div className="flex flex-col gap-3">
                 <Input
-                  type="password"
-                  placeholder="Mot de passe"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  type="text"
+                  placeholder="Promo"
+                  value={promo}
+                  onChange={(e) => setPromo(e.target.value)}
                   fullWidth
                 />
-                {/* <Input
+                <Input
+                  type="text"
+                  placeholder="Cycle"
+                  value={cycle}
+                  onChange={(e) => setCycle(e.target.value)}
+                  fullWidth
+                />
+                <Input
+                  type="text"
+                  placeholder="Eno de rattachement"
+                  value={eno}
+                  onChange={(e) => setEno(e.target.value)}
+                  fullWidth
+                />
+                <Input
                   type="file"
                   placeholder="Photo"
                   value={photo}
                   onChange={(e) => setPhoto(e.target.value)}
                   fullWidth
-                /> */}
+                />
               </div>
             </div>
 
@@ -361,22 +350,20 @@ const Tuteurstraqueur = () => {
       )}
 
       {/* Modal pour voir les détails */}
-      {selectedTuteur && (
+      {selectedEtudiant && (
         <Modal isOpen={isViewModalOpen} onClose={closeViewModal} width="1/3">
           <div className="mt-4">
             <h1 className="text-center my-5 font-bold text-2xl">
-              Détails tuteur 
+              Détails étudiant
             </h1>
             <div className="flex flex-col gap-3">
               {/* <p>Prenom: {selectedEtudiant.prenom}</p> */}
-              <p>Photo: {selectedTuteur.photo}</p>
-              <p>Prenom: {selectedTuteur.prenom}</p>
-              <p>Nom: {selectedTuteur.nom}</p>
-              <p>Email: {selectedTuteur.email}</p>
-              <p>Adresse: {selectedTuteur.adresse}</p>
-              <p>Sexe: {selectedTuteur.sexe}</p>
-              <p>Age: {selectedTuteur.age}</p>
-              <p>Telephone: {selectedTuteur.telephone}</p>
+              <p>Nom: {selectedEtudiant.nom}</p>
+              <p>Email: {selectedEtudiant.email}</p>
+              <p>Promo: {selectedEtudiant.promo}</p>
+              <p>Eno: {selectedEtudiant.eno}</p>
+              <p>Cycle: {selectedEtudiant.cycle}</p>
+              <p>Adresse: {selectedEtudiant.adresse}</p>
             </div>
 
             <div className="flex justify-center mt-8 gap-8">
@@ -396,4 +383,21 @@ const Tuteurstraqueur = () => {
   );
 };
 
-export default Tuteurstraqueur;
+export default EtudiantTraqueur;
+
+{/* <Button
+              color="blue"
+              size="md"
+              // variant="contained"
+              background="blue-500"
+              fullWidth={false}
+              //   onClick={handleLogin}
+                      ><Button>
+                              {/* <Button
+              color="blue"
+                          size="md"
+              // variant="contained"
+              background="blue-500"
+              fullWidth={false}
+            //   onClick={handleLogin}
+            ></Button> */} 
