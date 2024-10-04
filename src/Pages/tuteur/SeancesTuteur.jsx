@@ -40,7 +40,7 @@ const SeancesTuteur = () => {
               Module 5
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              26/10/2020
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
@@ -72,7 +72,7 @@ const SeancesTuteur = () => {
               Module 4
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              6/06/2020
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -104,7 +104,7 @@ const SeancesTuteur = () => {
               Module 3
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              08/04/2024
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -136,7 +136,7 @@ const SeancesTuteur = () => {
               Module 2
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              13/02/2024
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -168,7 +168,7 @@ const SeancesTuteur = () => {
              Module 1
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              05/03/2024
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -200,7 +200,7 @@ const SeancesTuteur = () => {
               Module 1
             </td>
             <td className="px-4 py-3 text-sm">
-              6/10/2020
+              03/01/2024
             </td>
             <td className="px-4 py-3 text-xs">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">

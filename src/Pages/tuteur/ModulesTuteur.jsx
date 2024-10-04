@@ -40,7 +40,7 @@ const ModulesTuteur = () => {
           </td>
           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
             <p className="text-gray-900 whitespace-no-wrap">
-              Jan 21, 2020
+              21/11/2024
             </p>
           </td>
           <td className="px-4 py-3 text-xs border-b border-gray-200">
@@ -64,7 +64,7 @@ const ModulesTuteur = () => {
           </td>
           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
             <p className="text-gray-900 whitespace-no-wrap">
-              Jan 01, 2020
+              10/06/2024
             </p>
           </td>
           <td className="px-4 py-3 text-xs border-b border-gray-200">
@@ -88,7 +88,7 @@ const ModulesTuteur = () => {
           </td>
           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
             <p className="text-gray-900 whitespace-no-wrap">
-              Jan 10, 2020
+              08/03/2024
             </p>
           </td>
           <td className="px-4 py-3 text-xs border-b border-gray-200">
@@ -111,7 +111,7 @@ const ModulesTuteur = () => {
             <p className="text-gray-900 whitespace-no-wrap">2 Semaines</p>
           </td>
           <td className="px-5 py-5 bg-white text-sm border-b border-gray-200">
-            <p className="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
+            <p className="text-gray-900 whitespace-no-wrap">03/01/2024</p>
           </td>
           <td className="px-4 py-3 text-xs border-b border-gray-200">
               <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
